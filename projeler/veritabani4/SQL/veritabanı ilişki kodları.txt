@@ -1,0 +1,111 @@
+Table "altkategori" {
+  "altkategori_id" int [pk, increment]
+  "altkategori_ad" VARCHAR(20)
+}
+
+Table "kategori" {
+  "kat_id" int [pk, increment]
+  "kat_ad" VARCHAR(20)
+}
+
+Table "alinan_urun" {
+  "al_id" int [pk, increment]
+  "al_urun_id" int
+}
+
+Table "urun" {
+  "urun_id" int [pk, increment]
+  "urun_ad" varchar(20)
+  "katag_id" int
+  "altkategori_id" int
+}
+
+Table "ver_urun" {
+  "ver_id" int [pk, increment]
+  "ver_urun_id" int
+}
+
+Table "kullanici" {
+  "k_id" int [pk, increment]
+  "k_ad" varchar(20)
+  "k_pass" varchar(20)
+}
+
+Table "admins" {
+  "admin_id" int [pk, increment]
+  "admin_kad" varchar(20)
+  "admin_password" varchar(500)
+  "admin_updated_at" timestamp
+}
+
+Table "hediye" {
+  "puan_id" int [pk, increment]
+  "puan_miktar" int
+  "puan_uye_id" int
+}
+
+Table "uye" {
+  "uye_id" int [pk, increment]
+  "uye_ad" varchar(20)
+}
+
+Table "stok" {
+  "stok_id" int [pk, increment]
+  "stok_urun_id" int
+  "stok_miktar" int
+}
+
+Table "bakim" {
+  "bakim_id" int [pk, increment]
+  "b_urun_id" int
+}
+
+Table "stok_iade" {
+  "stok__iade_id" int [pk, increment]
+  "stok_iade_miktar" int
+}
+
+Table "stok_ihtiyac" {
+  "stok_ihtiyac_id" int [pk, increment]
+  "ihtiyac_miktar" int
+}
+
+Table "uye_urun" {
+  "uk_id" int [pk, increment]
+  "uk_uye_id" int
+  "uk_urun_id" int
+}
+
+Table "kul_kit" {
+  "kk_id" int [pk, increment]
+  "kk_kul_id" int
+  "kk_kit_id" int
+}
+
+
+Ref: "urun"."urun_id" < "alinan_urun"."al_urun_id"
+
+Ref: "urun"."urun_id" < "ver_urun"."ver_urun_id"
+
+
+Ref: "altkategori"."altkategori_id" < "urun"."altkategori_id"
+
+Ref: "kategori"."kat_id" < "urun"."katag_id"
+
+Ref: "urun"."urun_id" < "bakim"."b_urun_id"
+
+
+
+Ref: "stok_iade"."stok__iade_id" < "stok"."stok_urun_id"
+
+Ref: "stok_ihtiyac"."stok_ihtiyac_id" < "stok"."stok_urun_id"
+
+Ref: "urun"."urun_id" < "kul_kit"."kk_kit_id"
+
+Ref: "kul_kit"."kk_kul_id" < "kullanici"."k_id"
+
+Ref: "uye"."uye_id" < "uye_urun"."uk_uye_id"
+
+Ref: "uye_urun"."uk_urun_id" < "urun"."urun_id"
+
+Ref: "hediye"."puan_uye_id" < "uye"."uye_ad"

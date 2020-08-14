@@ -1,0 +1,43 @@
+$_post veri gelişini yani verinin bir yerden bize aktarıldıgını söylemekte
+include dahil etme tanımını içermekte yani başka bir sayfayı bizim söylediğimiz noktadan dahil edip devam ettirir
+$dsn içerisinde serverin yani hangi veritabanına hangi ip ve port uzerınden baglanıcagımızı kullanıcı adı sifreminiz ne oldugunu girdiğimiz kısımdır
+$conn ise dsn uzerınde kayıtlı bilgileri kullanarak oluşturdugumuz baglantıdır yanı baglantıyı boylelıkle acmıs oluruz
+$conn->exec() içerisine girilen sql tumleclerini çalıstırır bu belki bir insert belki bir update belki bir delete olabılır 
+ancak exec select cumlesı olamaz
+
+$conn->query bunun içersine select cumlesini yazarız
+
+Select gibi gelicek bir verimiz var ise yanı veri tabanından bilgi cekiyor isek 
+bunu row row yani satır satır görürüz bunun için while gibi döngü çeşitleri ile içersinideki kodları çalıstırırız
+if ve else ise if içindeki kondisyon yani 1=1 gibi ifadeler tutar yanı dogru olursa ifin içerisine girer
+Eger ifdeki ifade dogru değil yanı 1=3 gibi bir şey olursa elsenin içindeki kodları çalıstırır
+{} suslu parantez içerisi bir alandır
+if(){ kodlar burada bulunur}
+yada ifden sonra gelen ilk noktali virgul satırını calıstırır
+
+SQL tumlecikleri acıklaması-------------------
+----------------------------------------------
+select */kolon1,kolon2 from tablo_adı
+* işareti butun kolonları getirir, eger sadece bir kaç kolon getiricek isek kolon isimlerini yazarız
+insert into tablo_adi(kolon1,kolon2) values (kolon1,'kolon2')
+
+insert dahil etme anlamına gelir tabloya kayıt eklemek için kullanılır
+tablo adından gelen kolon siralamasi ile valuesten sonra parantez içerisinde o kolona girilicek değeri yazarız
+ancak bir şeye dikkat etmek lazım '' tırnak var ise değişken sozel '' yok ise sayısaldır
+yani anlıcaginiz '1'+'1' ='11' ederken 1+1=2 etmekte
+
+delete from table_adi where colon1=colon1
+
+delete silme işlemi için gercekleştirilir
+where ile kondisyon yazmaz isek tüm tabloyu silicektir
+Where ile hangi veriyi silmesi gerektigini söyleriz
+
+
+update tablo_adi set kolon1=kolon1 ,kolon2=kolon2 where kolon3 = kolon3
+
+update adından anlaşılıcagı uzere guncelleme işlemi yapmaktadır
+
+guncelleme yaparken set ile where arasında tanımlanan kolonlara (kolonlar solda tanımlanır değiştirilcek yeni değer sagda)
+verileri atar yani gunceller
+
+deletede oldugu gibi where yazılmaz ıse tum tablodaki verileri günceller
